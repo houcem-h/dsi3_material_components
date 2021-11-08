@@ -10,6 +10,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -30,8 +31,19 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
-  void _likeThis() {
+  Icon _heartIcon = Icon(Icons.favorite_border, color: Colors.white);
+  bool _checkLike = false;
 
+  void _likeThis() {
+    setState(() {
+      if(_checkLike) {
+        _heartIcon = Icon(Icons.favorite_border, color: Colors.white);
+        _checkLike = false;
+      } else {
+        _heartIcon = Icon(Icons.favorite, color: Colors.white);
+        _checkLike = true;
+      }
+    });
   }
 
   @override
@@ -43,7 +55,8 @@ class _MyHomePageState extends State<MyHomePage> {
         actions: <Widget>[
           IconButton(
               onPressed: _likeThis,
-              icon: Icon(Icons.favorite_border, color: Colors.white,))
+              icon: _heartIcon
+          ),
         ],
       ),
     );
