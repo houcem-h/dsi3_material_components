@@ -30,12 +30,21 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+  void _likeThis() {
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Colors.indigoAccent,
+        actions: <Widget>[
+          IconButton(
+              onPressed: _likeThis,
+              icon: Icon(Icons.favorite_border, color: Colors.white,))
+        ],
       ),
     );
   }
