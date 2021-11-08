@@ -30,13 +30,12 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
   Icon _heartIcon = Icon(Icons.favorite_border, color: Colors.white);
   bool _checkLike = false;
 
   void _likeThis() {
     setState(() {
-      if(_checkLike) {
+      if (_checkLike) {
         _heartIcon = Icon(Icons.favorite_border, color: Colors.white);
         _checkLike = false;
       } else {
@@ -53,10 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
         backgroundColor: Colors.indigoAccent,
         actions: <Widget>[
-          IconButton(
-              onPressed: _likeThis,
-              icon: _heartIcon
-          ),
+          IconButton(onPressed: _likeThis, icon: _heartIcon),
         ],
       ),
       floatingActionButton: FloatingActionButton(
@@ -65,6 +61,32 @@ class _MyHomePageState extends State<MyHomePage> {
         child: _heartIcon,
       ),
       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      bottomNavigationBar: BottomAppBar(
+        color: Colors.indigoAccent,
+        shape: CircularNotchedRectangle(),
+        child: Container(
+          height: 50,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: const <Widget>[
+              IconButton(
+                  onPressed: null,
+                  icon: Icon(
+                    Icons.add_location_alt,
+                    color: Colors.white,
+                  ),
+              ),
+              IconButton(
+                onPressed: null,
+                icon: Icon(
+                  Icons.east,
+                  color: Colors.white,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
