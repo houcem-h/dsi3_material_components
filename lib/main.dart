@@ -33,6 +33,8 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Icon _heartIcon = Icon(Icons.favorite_border, color: Colors.white);
   bool _checkLike = false;
+  int _selectedIndex = 0;
+  String _display = "0: Home view";
 
   void _likeThis() {
     setState(() {
@@ -42,6 +44,26 @@ class _MyHomePageState extends State<MyHomePage> {
       } else {
         _heartIcon = Icon(Icons.favorite, color: Colors.white);
         _checkLike = true;
+      }
+    });
+  }
+
+  void _clickedItem(int index) {
+    setState(() {
+      _selectedIndex = index;
+      switch (_selectedIndex) {
+        case 0: {
+          _display = "$_selectedIndex: Home view";
+        }
+        break;
+        case 1: {
+          _display = "$_selectedIndex: Account view";
+        }
+        break;
+        case 2: {
+          _display = "$_selectedIndex: Settings view";
+        }
+        break;
       }
     });
   }
@@ -59,12 +81,42 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ],
       ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Text(
+              '${_display}',
+              style: TextStyle(color: Colors.indigoAccent, fontSize: 40),
+            ),
+          ],
+        ),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _likeThis,
         backgroundColor: Colors.indigoAccent,
         child: _heartIcon,
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      floatingActionButtonLocation: FloatingActionButtonLocation.endFloat,
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home, color: Colors.white),
+            title: Text('Home', style: TextStyle(color: Colors.white))
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle, color: Colors.white),
+              title: Text('Account', style: TextStyle(color: Colors.white))
+          ),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings, color: Colors.white),
+              title: Text('Settings', style: TextStyle(color: Colors.white))
+          ),
+        ],
+        backgroundColor: Colors.indigoAccent,
+        currentIndex: _selectedIndex,
+        onTap: _clickedItem,
+      )
     );
   }
 }
