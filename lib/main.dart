@@ -64,6 +64,7 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.indigoAccent,
         child: _heartIcon,
       ),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
     );
   }
 }
