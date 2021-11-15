@@ -116,7 +116,26 @@ class _MyHomePageState extends State<MyHomePage> {
         backgroundColor: Colors.indigoAccent,
         currentIndex: _selectedIndex,
         onTap: _clickedItem,
-      )
+      ),
+      drawer: Drawer(
+        child: Column(
+          children: const <Widget>[
+            DrawerHeader(
+                child: Text(
+                  'Menu',
+                  style: TextStyle(
+                    color: Colors.indigoAccent,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 25
+                  ),
+                ),
+            ),
+            Text('Link 1'),
+            Text('Link 2'),
+            Text('Link 3'),
+          ],
+        ),
+      ),
     );
   }
 }
